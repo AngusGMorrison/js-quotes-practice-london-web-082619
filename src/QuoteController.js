@@ -50,4 +50,6 @@ class QuoteController {
     quoteList.append(quote.createCard());
   }
 
+
+
 }

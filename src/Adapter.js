@@ -11,8 +11,8 @@ class Adapter {
       quote: content,
       author: author
     }
-    const config = Adapter.buildRequestConfig("POST", quote)
-    
+    const config = Adapter.createRequestConfig("POST", quote)
+
     return fetch("http://localhost:3000/quotes", config)
       .then(response => {
         if (response.ok) {
@@ -24,7 +24,25 @@ class Adapter {
       .catch(console.log);
   }
 
-  static buildRequestConfig(method, body) {
+  static postLike(quoteId, timestamp) {
+    const like = {
+      quoteId: quoteId,
+      createdAt: timestamp
+    }
+    const config = Adapter.createRequestConfig("POST", like);
+
+    return fetch("http://localhost:3000/likes", config)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("HTTP response code " + response.status);
+        }
+      })
+      .catch(console.log);
+  }
+
+  static createRequestConfig(method, body) {
     return {
       method: method,
       headers: {

@@ -44,8 +44,8 @@ class Quote {
     const button = document.createElement("button");
     button.classList.add("btn-success");
     button.innerHTML = `Likes: <span>${this.likes}</span>`
-    button.addEventListener("click", (event) =>
-      QuoteController.likeQuote(event, this)
+    button.addEventListener("click", () =>
+      LikeController.likeQuote(this)
     );
     return button;
   }
