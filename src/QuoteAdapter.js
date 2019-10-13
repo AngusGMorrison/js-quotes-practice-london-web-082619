@@ -21,4 +21,13 @@ class QuoteAdapter extends Adapter {
       .then(response => QuoteAdapter.validateResponse(response));
   }
 
+  static patchQuote(quote) {
+    const updates = {
+      quote: quote.content
+    }
+    const config = QuoteAdapter.createRequestConfigWithBody("PATCH", updates)
+    return fetch(`http://localhost:3000/quotes/${quote.id}`, config)
+      .then(response => QuoteAdapter.validateResponse(response));
+  }
+
 }

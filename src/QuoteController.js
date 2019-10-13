@@ -57,4 +57,44 @@ class QuoteController {
       .catch(console.log);
   }
 
+  static editQuote(event, quote) {
+    QuoteController.toggleEditButtonsLock();
+    const editForm = quote.createEditForm();
+    event.target.parentNode.appendChild(editForm);
+  }
+
+  static toggleEditButtonsLock() {
+    const editButtons = document.querySelectorAll(".edit");
+    [...editButtons].forEach(button => {
+      button.disabled = !button.disabled;
+    });
+  }
+
+  static submitQuoteChanges(event, quote) {
+    event.preventDefault();
+    const quoteCard = event.target.parentNode.parentNode;
+    const inputValue = event.target.firstChild.value
+    if (inputValue === "") {
+      alert("Quote cannot be blank");
+    } else {
+      quote.content = inputValue;
+      QuoteAdapter.patchQuote(quote)
+        .then(() => {
+          QuoteController.refreshQuoteCard(quoteCard, quote);
+        })
+        .catch(console.log);
+    }
+  }
+
+  static refreshQuoteCard(quoteCard, quote) {
+    const quoteList = document.querySelector("#quote-list");
+    quoteList.replaceChild(quote.createCard(), quoteCard);
+  }
+
+  static cancelEditQuote(event) {
+    event.preventDefault();
+    event.target.parentNode.remove();
+    QuoteController.toggleEditButtonsLock();
+  }
+
 }
