@@ -8,12 +8,15 @@ class QuoteController {
   static bindEventListeners() {
     const submitButton = document.querySelector(".btn-primary");
     submitButton.addEventListener("click", QuoteController.submitQuote);
+    const sortDropdown = document.querySelector("select");
+    sortDropdown.addEventListener("change", QuoteController.addAllQuotesToPage)
   }
 
   static addAllQuotesToPage() {
     const quoteList = document.querySelector("#quote-list")
-    //QuoteController.clearElement(quoteList);
-    QuoteAdapter.getAllQuotes()
+    const sortColumn = document.querySelector("select").value;
+    QuoteController.clearElement(quoteList);
+    QuoteAdapter.getAllQuotes(sortColumn)
       .then(quoteRecords => {
         quoteRecords.forEach(quoteRecord => {
           const quote = new Quote(quoteRecord);
@@ -23,11 +26,11 @@ class QuoteController {
       .catch(console.log);
   }
 
-  // static clearElement(element) {
-  //   while (element.hasChildNodes()) {
-  //     element.lastChild.remove();
-  //   }
-  // }
+  static clearElement(element) {
+    while (element.hasChildNodes()) {
+      element.lastChild.remove();
+    }
+  }
 
   static submitQuote(event) {
     event.preventDefault();

@@ -1,7 +1,7 @@
 class QuoteAdapter extends Adapter {
 
-  static getAllQuotes() {
-    return fetch("http://localhost:3000/quotes?_embed=likes")
+  static getAllQuotes(sortColumn) {
+    return fetch(`http://localhost:3000/quotes?_embed=likes&_sort=${sortColumn}`)
       .then(response => QuoteAdapter.validateResponse(response));
   }
 
