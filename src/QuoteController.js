@@ -13,7 +13,7 @@ class QuoteController {
   static addAllQuotesToPage() {
     const quoteList = document.querySelector("#quote-list")
     //QuoteController.clearElement(quoteList);
-    Adapter.getAllQuotes()
+    QuoteAdapter.getAllQuotes()
       .then(quoteRecords => {
         quoteRecords.forEach(quoteRecord => {
           const quote = new Quote(quoteRecord);
@@ -34,14 +34,14 @@ class QuoteController {
     const content = document.querySelector("#new-quote");
     const author = document.querySelector("#author");
     if (content.value !== "" && author.value !== "") {
-      Adapter.postQuote(content.value, author.value)
+      QuoteAdapter.postQuote(content.value, author.value)
         .then(quoteRecord => QuoteController.addNewQuoteToPage(quoteRecord))
         .catch(console.log);
     } else {
       alert("Both fields are required.")
     }
-    content.textContent = "";
-    author.textContent = "";
+    content.value = "";
+    author.value = "";
   }
 
   static addNewQuoteToPage(quoteRecord) {
@@ -50,6 +50,11 @@ class QuoteController {
     quoteList.append(quote.createCard());
   }
 
-
+  static destroyQuote(event, quote) {
+    const quoteCard = event.target.parentNode.parentNode;
+    QuoteAdapter.destroyQuote(quote.id)
+      .then(() => quoteCard.remove())
+      .catch(console.log);
+  }
 
 }

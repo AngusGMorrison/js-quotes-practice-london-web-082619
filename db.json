@@ -6,11 +6,6 @@
       "author": "Ann Richards"
     },
     {
-      "id": 2,
-      "quote": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.",
-      "author": "Collin Powell"
-    },
-    {
       "id": 3,
       "quote": "Don't count the days, make the days count.",
       "author": "Mike Tyson"
@@ -36,19 +31,19 @@
       "author": "Benjamin Franklin"
     },
     {
-      "id": 8,
-      "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-      "author": "Winston Churchhill"
+      "quote": "sdasdas",
+      "author": "asdasd",
+      "id": 8
     },
     {
-      "id": 9,
-      "quote": "Our greatest glory is not in never falling, but in rising everytime we fall.",
-      "author": "Confucius"
+      "quote": "sdasdasdasdasdas",
+      "author": "asdasddasdasdasd",
+      "id": 9
     },
     {
-      "id": 10,
-      "quote": "You know, failure hurts. Any kind of failure stings. If you live in the sting, you will undoubtedly fail. My way of getting past the sting is to say no, I’m just not going to let this get me down.",
-      "author": "Sonia Sotomayor"
+      "quote": "sdadasdasdas",
+      "author": "asdasdasdasd",
+      "id": 10
     }
   ],
   "likes": [
@@ -91,11 +86,6 @@
       "quoteId": 3,
       "createdAt": 1570978390,
       "id": 9
-    },
-    {
-      "quoteId": 2,
-      "createdAt": 1570978473,
-      "id": 10
     },
     {
       "quoteId": 4,
@@ -141,6 +131,16 @@
       "quoteId": 5,
       "createdAt": 1570978630,
       "id": 19
+    },
+    {
+      "quoteId": 1,
+      "createdAt": 1570979532,
+      "id": 20
+    },
+    {
+      "quoteId": 3,
+      "createdAt": 1570979534,
+      "id": 22
     }
   ]
 }

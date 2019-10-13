@@ -1,12 +1,12 @@
 class LikeController {
 
   static likeQuote(event, quote) {
-    const likeCount = document.querySelector("button span");
+    const likeCountSpan = event.target.firstElementChild;
     const timestamp = LikeController.createTimestamp();
-    Adapter.postLike(quote.id, timestamp)
+    LikeAdapter.postLike(quote.id, timestamp)
       .then(() => {
         quote.likes++;
-        event.target.firstElementChild.textContent = quote.likes;
+        likeCountSpan.textContent = quote.likes;
       })
       .catch(console.log);
   }

@@ -54,8 +54,8 @@ class Quote {
     const button = document.createElement("button");
     button.classList.add("btn-danger");
     button.textContent = "Delete";
-    button.addEventListener("click", () =>
-      QuoteController.deleteQuote(this)
+    button.addEventListener("click", (event) =>
+      QuoteController.destroyQuote(event, this)
     );
     return button;
   }
